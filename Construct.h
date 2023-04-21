@@ -2,12 +2,7 @@
 #include <cstdint>
 #include <numbers>
 
-#include "src/Mesh.h"
-#include "src/GeneratorSettings.h"
-#include "src/CalculateNormals.h"
-#include "src/ProcessMesh.h"
-#include "src/Icosphere.h"
-#include "data/data.h"
+#include "internal/internal.h"
 
 // Defines to minimise "magic" numbers
 #define VERTEX_ELEMENT_COUNT 3
@@ -294,31 +289,9 @@ namespace Construct
 	/// </summary>
 	/// <param name="settings">Settings that affect how the mesh is generated</param>
 	/// <returns>Mesh data for a Skybox Cube</returns>
-	inline Mesh SkyboxCube(const GeneratorSetting& settings = GeneratorSetting())
+	inline Mesh SkyboxCube(const GeneratorSetting& settings = GeneratorSetting(FaceDirection::CW))
 	{
-		Mesh mesh;
-		// Calculate normals
-		mesh.normals = internal::CalculateNormals(mesh.vertices, mesh.indices);
-		// Process mesh for transforms
-		internal::ProcessMesh(mesh, settings);
-		return mesh;
-	}
-	/// <summary>
-	/// Generates a Skybox Dome
-	/// Uses a hemispherical dome texture layout:
-	/// https://commons.wikimedia.org/wiki/File:Skybox_sky.png
-	/// </summary>
-	/// <param name="rings">Number of longitude lines</param>
-	/// <param name="segments">Number of latitude lines</param>
-	/// <param name="settings">Settings that affect how the mesh is generated</param>
-	/// <returns>Mesh data for a Skybox Dome</returns>
-	inline Mesh SkyboxDome(std::uint32_t rings, std::uint32_t segments, const GeneratorSetting& settings = GeneratorSetting())
-	{
-		Mesh mesh;
-		// Calculate normals
-		mesh.normals = internal::CalculateNormals(mesh.vertices, mesh.indices);
-		// Process mesh for transforms
-		internal::ProcessMesh(mesh, settings);
+		Mesh mesh = Cube(settings);
 		return mesh;
 	}
 	/// <summary>
@@ -329,13 +302,9 @@ namespace Construct
 	/// <param name="segments">Number of latitude lines</param>
 	/// <param name="settings">Settings that affect how the mesh is generated</param>
 	/// <returns>Mesh data for a Skybox Sphere</returns>
-	inline Mesh SkyboxSphere(std::uint32_t rings, std::uint32_t segments, const GeneratorSetting& settings = GeneratorSetting())
+	inline Mesh SkyboxSphere(std::uint32_t rings, std::uint32_t segments, const GeneratorSetting& settings = GeneratorSetting(FaceDirection::CW))
 	{
-		Mesh mesh;
-		// Calculate normals
-		mesh.normals = internal::CalculateNormals(mesh.vertices, mesh.indices);
-		// Process mesh for transforms
-		internal::ProcessMesh(mesh, settings);
+		Mesh mesh = UVSphere(rings, segments, settings);
 		return mesh;
 	}
 }
