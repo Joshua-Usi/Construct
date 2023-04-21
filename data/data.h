@@ -4,7 +4,7 @@
 
 namespace Construct::internal
 {
-	struct
+	const inline struct
 	{
 		const std::vector<float> QuadVertices = {
 			-0.5f, -0.5f, 0.0f,
@@ -12,7 +12,7 @@ namespace Construct::internal
 			-0.5f,  0.5f, 0.0f,
 			 0.5f, -0.5f, 0.0f,
 		};
-		const std::vector<uint32_t> QuadIndices = {
+		const std::vector<std::uint32_t> QuadIndices = {
 			0, 1, 2,
 			3, 1, 0,
 		};
@@ -22,7 +22,7 @@ namespace Construct::internal
 			0.0f, 0.0f,
 			1.0f, 1.0f,
 		};
-		const std::vector<uint32_t> PlaneIndexMap = {
+		const std::vector<std::uint32_t> PlaneIndexMap = {
 			2, 1, 0,
 			2, 3, 1,
 		};
@@ -79,7 +79,7 @@ namespace Construct::internal
 			20, 21, 22,
 			23, 21, 20,
 		};
-		// U component will be divided by 6
+		// U component will be divided by 6 to map to range [0.0f, 1.0f]
 		const std::vector<float> CubeTextureUVs = {
 			// Left
 			0.0f, 1.0f,
@@ -111,6 +111,63 @@ namespace Construct::internal
 			5.0f, 1.0f,
 			6.0f, 1.0f,
 			5.0f, 0.0f,
+		};
+		const std::vector<std::uint32_t> IcosphereBaseIndices = {
+			6, 5, 0,
+			7, 6, 1,
+			8, 7, 2,
+			9, 8, 3,
+			10, 9, 4,
+			12, 11, 5,
+			5, 6, 12,
+			13, 12, 6,
+			6, 7, 13,
+			14, 13, 7,
+			7, 8, 14,
+			15, 14, 8,
+			8, 9, 15,
+			16, 15, 9,
+			9, 10, 16,
+			11, 12, 17,
+			12, 13, 18,
+			13, 14, 19,
+			14, 15, 20,
+			15, 16, 21,
+		};
+		// U component divided by 30.0f
+		const std::vector<float> IcosphereBaseTextureUVs = {
+			 3.0f, 0.0f,
+			 9.0f, 0.0f,
+			15.0f, 0.0f,
+			21.0f, 0.0f,
+			27.0f, 0.0f,
+
+			 0.0f, 1.0f / 3.0f,
+			 6.0f, 1.0f / 3.0f,
+			12.0f, 1.0f / 3.0f,
+			18.0f, 1.0f / 3.0f,
+			24.0f, 1.0f / 3.0f,
+			30.0f, 1.0f / 3.0f,
+
+			-3.0f, 2.0f / 3.0f,
+			 3.0f, 2.0f / 3.0f,
+			 9.0f, 2.0f / 3.0f,
+			15.0f, 2.0f / 3.0f,
+			21.0f, 2.0f / 3.0f,
+			27.0f, 2.0f / 3.0f,
+
+			 6.0f, 1.0f,
+			12.0f, 1.0f,
+			18.0f, 1.0f,
+			24.0f, 1.0f,
+			30.0f, 1.0f,
+		};
+		// takes a 2, 1, 0 triangle, subdivides it serpinski style and remaps the indices to this array
+		const std::vector<std::uint32_t> IcosphereSubdivisionRemapIndices = {
+			0, 1, 2,
+			1, 3, 4,
+			2, 4, 5,
+			2, 1, 4,
 		};
 	} data;
 }

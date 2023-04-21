@@ -29,5 +29,27 @@ namespace Construct
 		/// With 0.0f, 0.0f denoting bottom-left corner
 		/// </summary>
 		std::vector<float> textureUVs;
+		// Default constructor
+		Mesh() = default;
+		/// <summary>
+		/// Initialise arrays with lengths and initialise to 0
+		/// </summary>
+		inline Mesh(std::uint32_t vertexCount, std::uint32_t indexCount, std::uint32_t normalCount, std::uint32_t textureUVs)
+		{
+			this->vertices = std::vector<float>(vertexCount, 0.0f);
+			this->indices = std::vector<std::uint32_t>(indexCount, 0);
+			this->normals = std::vector<float>(normalCount, 0.0f);
+			this->textureUVs = std::vector<float>(textureUVs, 0.0f);
+		}
+		/// <summary>
+		/// Initialise with another mesh
+		/// </summary>
+		inline Mesh(const Mesh& other)
+		{
+			this->vertices = std::vector<float>(other.vertices);
+			this->indices = std::vector<std::uint32_t>(other.indices);
+			this->normals = std::vector<float>(other.normals);
+			this->textureUVs = std::vector<float>(other.textureUVs);
+		}
 	};
 }

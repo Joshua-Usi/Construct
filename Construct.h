@@ -6,6 +6,7 @@
 #include "src/GeneratorSettings.h"
 #include "src/CalculateNormals.h"
 #include "src/ProcessMesh.h"
+#include "src/Icosphere.h"
 #include "data/data.h"
 
 // Defines to minimise "magic" numbers
@@ -243,7 +244,9 @@ namespace Construct
 	/// <returns>Mesh data for an Icosphere</returns>
 	inline Mesh Icosphere(std::uint32_t subdivisions, const GeneratorSetting& settings = GeneratorSetting())
 	{
-		Mesh mesh;
+		// Generate Icosphere base case
+		Mesh mesh = internal::IcosphereSubdivide(internal::IcosphereBase(), subdivisions);
+
 		// Calculate normals
 		mesh.normals = internal::CalculateNormals(mesh.vertices, mesh.indices);
 		// Process mesh for transforms
