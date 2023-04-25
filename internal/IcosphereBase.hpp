@@ -1,12 +1,12 @@
 #pragma once
 
+#include "Mesh.hpp"
+
 #include <vector>
 #include <cstdint>
 #include <cmath>
 #include <numbers>
 #include <array>
-
-#include "Mesh.hpp"
 
 namespace Construct::internal
 {

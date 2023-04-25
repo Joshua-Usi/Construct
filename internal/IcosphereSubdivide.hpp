@@ -1,5 +1,7 @@
 #pragma once
 
+#include "./Mesh.hpp"
+
 #include <array>
 #include <unordered_map>
 #include <vector>

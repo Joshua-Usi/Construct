@@ -6,10 +6,6 @@
 #include <cmath>
 #include <cstdint>
 
-#include <iostream>
-#include <vector>
-#include <algorithm>
-
 namespace Construct::internal
 {
 	inline Mesh CylinderBody(std::uint32_t sides)
