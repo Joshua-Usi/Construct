@@ -47,7 +47,7 @@ namespace Construct
 				mesh.vertices[3 * index + 2] = z;
 				// Add texture UVs
 				mesh.textureUVs[2 * index + 0] = longitude;
-				mesh.textureUVs[2 * index + 1] = latitude;
+				mesh.textureUVs[2 * index + 1] = 1.0f - latitude;
 				// n + 1 verts but n squares
 				if (i < rings && j < segments)
 				{
