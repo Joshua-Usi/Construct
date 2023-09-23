@@ -36,7 +36,7 @@ namespace Construct
                 mesh.vertices[vertexIndex + 1] = z;
                 // Add texture to data
                 mesh.textureUVs[textureIndex + 0] = x + 0.5f;
-                mesh.textureUVs[textureIndex + 1] = 0.5f - z;
+                mesh.textureUVs[textureIndex + 1] = z + 0.5f;
                 // n + 1 verts but n squares
                 if (i < heightTiles && j < widthTiles)
                 {
